@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chennai Underwater</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+          integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet-src.js"
+            integrity="sha384-TWB9xRHTlLQmqAngHwD7usGcf4akGf0JP6aHwlgilpmOu2UuBq5aWLsDAh39iSn1"
+            crossorigin=""></script>
+
+    <script src="https://unpkg.com/esri-leaflet@2.0.8"
+            integrity="sha384-ze7rgny7/YGFxBlVgTBdOABNWe5V9BYjju/qwqJhCU8XJHtuEnRlbUpN5lXyY706"
+            crossorigin=""></script>
+
+    <link rel="stylesheet" href="mapStyle.css"/>
+    <link rel="stylesheet" href="normalize.css"/>
+    <script src="data/chennaiFlood.js"></script>
+    <script src="data/zoneCoords.js"></script>
+
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&lt;</a>
+    <div class="within">
+        <h1>View Control Panel</h1>
+        <div class="innerBox">
+            <h4>Vulnerable Districts</h4>
+            <a href="#" onclick="querySlum('1')">Thiruvottiyur</a>
+            <a href="#" onclick="querySlum('2')">Manali</a>
+            <a href="#" onclick="querySlum('3')">Madhavaram</a>
+            <a href="#" onclick="querySlum('4')">Tondiarpet</a>
+            <a href="#" onclick="querySlum('5')">Royapettah</a>
+            <a href="#" onclick="querySlum('6')">Chennai Central</a>
+            <a href="#" onclick="querySlum('7')">Perambur</a>
+            <a href="#" onclick="querySlum('8')">Ambattur</a>
+            <a href="#" onclick="querySlum('9')">Anna Nagar</a>
+            <a href="#" onclick="querySlum('10')">T. Nagar</a>
+            <a href="#" onclick="querySlum('11')">Valasaravakkam</a>
+            <a href="#" onclick="querySlum('12')">Alandur</a>
+            <a href="#" onclick="querySlum('13')">Adyar</a>
+            <a href="#" onclick="querySlum('14')">Perungudi</a>
+            <a href="#" onclick="querySlum('15')">Sholinganallur</a>
+        </div>
+        <br>
+        <div class="secondBox">
+            <h4>Flood Layers</h4>
+
+            <span class="switchLabel" >Inundated Roads</span>
+            <label class="switch">
+                <input id="floodSwitch" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+
+            <br>
+
+            <span class="switchLabel" >Relief Centers</span>
+            <label class="switch">
+                <input id="reliefSwitch" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+
+            <span class="switchLabel" >Slum Heat Map</span>
+            <label class="switch">
+                <input id="slumSwitch" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+
+            <br>
+
+            <span class="switchLabel">Set Slum Heat Map Opacity</span>
+
+            <br>
+            <input id="slumOpacity" type="range" value="20" onchange="setSlumOpacity()">
+            <br>
+            <select id="basemaps" onChange="changeBasemap(basemaps)">
+                <option value="Topographic">Topographic</option>
+                <option value="Streets">Streets</option>
+                <option value="NationalGeographic">National Geographic</option>
+                <option value="Oceans">Oceans</option>
+                <option value="Gray">Gray</option>
+                <option value="DarkGray">Dark Gray</option>
+                <option value="Imagery">Imagery</option>
+                <option value="ShadedRelief">Shaded Relief</option>
+            </select>
+
+        </div>
+    </div>
+</div>
+<div id="mapId"></div>
+<div id="splash" class="wrapper" style='background-color: #63B4D2;position:absolute;width:450px;height:300px;top:0;right:0;bottom:0;left:0;margin:auto;border-radius: 25px;'>
+    <button class='button' style='box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77);font-size: 25px;position:absolute;top:110%;left: 50%;transform: translate(-50%, -50%);' onClick="clearHTML('splash')">View the City</button>
+</div>
+<div class="infoTag" style="box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77); background-color: #63B4D2;top:10px;left:10px;padding:2px 9px 6px;box-sizing: border-box;border-radius:500px;">
+    <span style="font-size:23px;cursor:pointer; color: #ffffff" onclick="openNav()">&#9776;</span>
+</div>
+
+<div class="wrapper popup" style="position:fixed;left:55px;top:11.5px; background-color: #63B4D2"><span style="color: #ffffff;">View more information in the control panel by clicking the icon.</span></div>
+<div id="popLegend" style="box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77);position:absolute; right: 15px; bottom: 30px;z-index:600; background-color: #ffffff; border-radius: 15px; padding: 9px;"></div>
+
+<script src="map.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+body { margin:0; padding:0; }
+#mapId { position: absolute; top:0; bottom:0; right:0; left:0; }
+#mapActions {
+    position: absolute;
+    z-index: 400;
+    top: 15px;
+    padding: 10px;
+    background-color: #35483c;
+    white-space: nowrap;
+    border-style: groove;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px grey;
+    opacity: .75;
+}
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 401; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #001230; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px; /* Place content 60px from the top */
+    padding-bottom: 60px;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    opacity: .8;
+    overflow-y: scroll;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 4px 4px 4px 8px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #b20098;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.sidenav .closebtn:hover {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 42px;
+    margin-left: 50px;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.wrapper {
+    position: absolute;
+    z-index: 400;
+    background: #eaeaea;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77);
+}
+
+.wrapper:hover {
+    position: absolute;
+    z-index: 400;
+    background: #eaeaea;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+    color: #f1f1f1;
+
+}
+
+h4 {
+    margin: 0;
+    color: #f1f1f1;
+}
+
+.within {
+    position: relative;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+    float: left;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 17px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+
+.switchLabel {
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    float: left;
+    display: inline-block;
+    margin:5px ;
+}
+
+.innerBox{
+    background-color: #63b4d2;
+    position: relative;
+    z-index: 400;
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77);
+}
+
+.secondBox{
+    background-color: #63b4d2;
+    position: relative;
+    z-index: 400;
+    padding: 10px;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77);
+}
+
+#key {
+    position: absolute;
+    right: 15px;
+    z-index:401;
+}
+.colorBox {
+    width:10px;
+    height:15px;
+    float: left;
+}
+
+.infoBox {
+    background-color: #63B4D2;
+    box-sizing: border-box;
+    border-radius:50px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    z-index: 400;
+}
+
+.button {
+    background-color: #63B4D2; /* Green */
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: black;
+}
+
+.infoTag {
+    position: absolute;
+    z-index: 400;
+    background: #eaeaea;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+#selector {
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.77);
+    position:absolute;
+    right: 15px;
+    bottom: 129px;
+    z-index:600;
+}
